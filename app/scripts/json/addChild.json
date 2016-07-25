@@ -1,0 +1,11 @@
+[{
+   "username" : "murali",
+   "password" : "krishna"
+},
+  {
+    "username" : "spandana",
+    "password" : "12345"
+  },
+{"email":"admin","password":"admin"},
+{"email":"student1@test.com","password":"student1"},
+{"email":"parent1@test.com","password":"parent1"}]
