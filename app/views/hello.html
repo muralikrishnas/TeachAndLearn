@@ -1,0 +1,15 @@
+ <div id="plwrap">
+                  <table id="plList" class="table table-hover">
+					<tr ng-repeat="topic in topicslist" class="plItem">
+                      <td> <span class="glyphicon glyphicon-star-empty"></span></td>
+                      <td class="plTitle"><a>{{topic.topicName}}</a></td>
+                      <td class="plLength">{{topic.length}}</td>
+                      <td>{{topic.reference}}</td>
+                      <td>{{topic.rating}}</td>
+                      <td>{{topic.url}}</td>
+                      <td><div class="btn-group">
+                        <button type="button" class="btn-danger " title="Remove" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                      </div></td>
+                    </tr>
+				</table>
+				</div>

@@ -93,7 +93,7 @@
             loadTrack(index);
           }
         }),
-        tr = $('#plList tr').click(function () {
+        tr = $('.plItem tr').click(function () {
           var id = parseInt($(this).index());
           if (id !== index) {
             playTrack(id);
@@ -115,15 +115,8 @@
     }
   });
 </script>
-<!--<!DOCTYPE html>-->
-<!--<html>-->
-<!--<head>-->
-<!--<meta charset="utf-8">-->
-<!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
-<!--<title>Teach and Learn - An audio platform for Education || Teacher Home Page</title>-->
-<!--&lt;!&ndash; Tell the browser to be responsive to screen width &ndash;&gt;-->
-<!--<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">-->
-<!--<body class="hold-transition skin-blue layout-top-nav">-->
+
+				
 <div class="wrapper">
   <header class="main-header">
     <!-- Header Navbar: style can be found in header.less -->
@@ -390,7 +383,7 @@
           </div>
         </div>
         <!-- /.sidebar -->
-
+    
         <div class="col-md-7">
           <div class="box">
 
@@ -423,174 +416,51 @@
                     <th>Source</th>
                     <th>Action</th>
                   </tr>
-                </table>
-                <div id="plwrap">
+               </table>
+                 <div id="plwrap">
                   <table id="plList" class="table table-hover">
-
-                    <tr class="plItem">
-                      <!--<td class="plNum">01.</td>-->
+                  	<tbody>
+					<tr class="plItem" ng-repeat="topic in topicslist">
                       <td> <span class="glyphicon glyphicon-star-empty"></span></td>
-                      <td class="plTitle"><a>Introduction</a></td>
-                      <td class="plLength">2:46</td>
-                      <td>Page  42-46</td>
-                      <td>Fun record..</td>
-                      <td>Samith</td>
+                      <td class="plTitle"><a>{{topic.topicName}}</a></td>
+                      <td class="plLength">{{topic.length}}</td>
+                      <td>{{topic.reference}}</td>
+                      <td>{{topic.rating}}</td>
+                      <td>{{topic.url}}</td>
                       <td><div class="btn-group">
-                        <button type="button" class="btn-danger " title="Remove" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                        <!-- <button type="button" class="btn-danger " title="Remove" data-toggle="modal" data-target=".bs-example-modal-lgconformation" ng-click="deleteAudio(topic.audioId)"><span class="glyphicon glyphicon-remove-sign"></span></button>
+                      <button type="button" class="btn btn-warning " title="Share"  data-toggle="modal" data-target=".bs-example-modal-lg2" ><i class="glyphicon glyphicon-share" aria-hidden="true"></i></button> -->
+                      <button type="button" class="btn btn-warning " title="Delete" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-trash"></span></button>
                       </div></td>
                     </tr>
-
-                    <tr class="plItem">
-                      <!--<td class="plNum">02.</td>-->
-                      <td> <span class="glyphicon glyphicon-star-empty"></span></td>
-                      <td class="plTitle"><a>The History of Mask</a></td>
-                      <td class="plLength">6:25</td>
-                      <td>Page 47-50</td>
-                      <td>Read for...</td>
-                      <td>Rupa</td>
-                      <td><div class="btn-group">
-                        <button type="button" class="btn-danger " title="Remove" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-remove-sign"></span></button>
-                      </div></td>
-                    </tr>
-
-
-                    <tr class="plItem">
-                      <!--<td class="plNum">03.</td>-->
-                      <td> <span class="glyphicon glyphicon-star"></span></td>
-                      <td class="plTitle"><a>Alex finds the batch </a></td>
-                      <td class="plLength">2:30</td>
-                      <td>Page 51-55</td>
-                      <td>Test port..</td>
-                      <td>Self</td>
-                      <td><div class="btn-group">
-                        <button type="button" class="btn btn-warning " title="Share"  data-toggle="modal" data-target=".bs-example-modal-lg2" ><i class="glyphicon glyphicon-share" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-warning " title="Delete" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-trash"></span></button>
-                      </div></td>
-                    </tr>
-
-                    <tr class="plItem">
-                      <!--<td class="plNum">04.</td>-->
-                      <td> <span class="glyphicon glyphicon-star-empty"></span></td>
-                      <td class="plTitle"><a>Questions and Answers</a></td>
-                      <td class="plLength">4:55</td>
-                      <td>Page 56-60</td>
-                      <td>Test port...</td>
-                      <td>Self</td>
-                      <td><div class="btn-group">
-                        <button type="button" class="btn btn-warning " title="Share"  data-toggle="modal" data-target=".bs-example-modal-lg2" ><i class="glyphicon glyphicon-share" aria-hidden="true"></i></button>
-                        <button type="button" class="btn btn-warning " title="Delete" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-trash"></span></button>
-                      </div></td>
-                    </tr>
-
-                    <tr class="plItem">
-                      <!--<td class="plNum">05.</td>-->
-                      <td> <span class="glyphicon glyphicon-star-empty"></span></td>
-                      <td class="plTitle"><a>Moral of the story</a></td>
-                      <td class="plLength">1:00</td>
-                      <td>Entire story</td>
-                      <td>Need mora</td>
-                      <td>None</td>
-                      <td>
-                        <div class="btn-group" data-toggle="tooltip" data-placement="right" title="" data-original-title="Request for Recording"> <a type="button" href="" class="btn btn-warning" data-toggle="tooltip"><span class="glyphicon glyphicon-hand-right"></span></a>
-                        </div>
-                      </td>
-                    </tr>
-
+                    </tbody>
+                   
                   </table>
-                </div>
-                </table>
+                   </div>
+                  	
+                    <div class="modal fade bs-example-modal-lgconformation" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Confirmation</h4>
+      </div>
+      <div class="modal-body">
+        <p>will be removed from your topics list</p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default"  ng-repeat="topic in topicslist" ng-click="deleteAudio(topic.audioId)">Ok</button>
+        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+				</table>
+				<!-- </div>
+			 -->
               </div>
-              <!--<div class="box-body table-responsive no-padding">-->
-              <!--<table class="table table-hover ">-->
-              <!--<div id="amazingaudioplayer-1" style="display:block;position:relative;width:100%;height:auto;margin:0px auto 0px;">-->
-              <!--<ul class="amazingaudioplayer-audios" style="display:none;">-->
-              <!--<li data-artist="Mr. Scruff" data-title="Kalimba" data-album="Ninja Tuna" data-info="" data-image="" data-duration="348">-->
-              <!--<div class="amazingaudioplayer-source" data-src="audios/Kalimba.mp3" data-type="audio/mpeg" />-->
-              <!--</li>-->
-              <!--<li data-artist="Richard Stoltzman/Slovak Radio Symphony Orchestra" data-title="Maid with the Flaxen Hair" data-album="Fine Music, Vol. 1" data-info="" data-image="" data-duration="170">-->
-              <!--<div class="amazingaudioplayer-source" data-src="audios/Maid with the Flaxen Hair.mp3" data-type="audio/mpeg" />-->
-              <!--</li>-->
-              <!--<li data-artist="Bob Acri" data-title="Sleep Away" data-album="Bob Acri" data-info="" data-image="" data-duration="201">-->
-              <!--<div class="amazingaudioplayer-source" data-src="audios/Sleep Away.mp3" data-type="audio/mpeg" />-->
-              <!--</li>-->
-              <!--</ul>-->
-
-              <!--</div>-->
-              <!--<tr>-->
-              <!--<th><div class="checkbox icheck">-->
-              <!--<label>-->
-              <!--<input type="checkbox" >-->
-              <!--</label>-->
-              <!--</div></th>-->
-              <!--<th>Topic Name</th>-->
-              <!--<th>Duration</th>-->
-              <!--<th>Reference</th>-->
-              <!--<th>Comments</th>-->
-              <!--<th>Source</th>-->
-              <!--<th>Action</th>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--<td> <span class="glyphicon glyphicon-star-empty"></span></td>-->
-              <!--<td><a href="#">Introduction</a></td>-->
-              <!--<td>4:50</td>-->
-              <!--<td>Page  42-46</td>-->
-              <!--<td>Fun reco…</td>-->
-              <!--<td>Samith</td>-->
-              <!--<td><div class="btn-group">-->
-
-              <!--<button type="button" class="btn-danger " title="Remove" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-remove-sign"></span></button>-->
-              <!--</div></td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--<td> <span class="glyphicon glyphicon-star"></span></td>-->
-              <!--<td><a href="#">The History of the Mask</a></td>-->
-              <!--<td>6:25</td>-->
-              <!--<td>Page 47-50</td>-->
-              <!--<td>Read for…</td>-->
-              <!--<td>Rupa</td>-->
-              <!--<td><div class="btn-group">-->
-
-              <!--<button type="button" class="btn-danger " title="Remove" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-remove-sign"></span></button>-->
-              <!--</div></td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--<td> <span class="glyphicon glyphicon-star-empty"></span></td>-->
-              <!--<td><a href="#">Alex finds the mask</a></td>-->
-              <!--<td>2:30</td>-->
-              <!--<td>Page 51-55</td>-->
-              <!--<td>Test port..</td>-->
-              <!--<td>Self</td>-->
-              <!--<td><div class="btn-group">-->
-              <!--<button type="button" class="btn btn-warning " title="Share"  data-toggle="modal" data-target=".bs-example-modal-lg2" ><i class="glyphicon glyphicon-share" aria-hidden="true"></i></button>-->
-              <!--<button type="button" class="btn btn-warning " title="Delete" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-trash"></span></button>-->
-              <!--</div></td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--<td> <span class="glyphicon glyphicon-star"></span></td>-->
-              <!--<td><a href="#">Q&A </a></td>-->
-              <!--<td>4:55</td>-->
-              <!--<td>Page 56-60</td>-->
-              <!--<td>Test port…</td>-->
-              <!--<td>Self</td>-->
-              <!--<td><div class="btn-group">-->
-              <!--<button type="button" class="btn btn-warning " title="Share"  data-toggle="modal" data-target=".bs-example-modal-lg2" ><i class="glyphicon glyphicon-share" aria-hidden="true"></i></button>-->
-              <!--<button type="button" class="btn btn-warning " title="Delete" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-trash"></span></button>-->
-              <!--</div></td>-->
-              <!--</tr>-->
-              <!--<tr>-->
-              <!--<td> <span class="glyphicon glyphicon-star-empty"></span></td>-->
-              <!--<td><a href="#"> Moral of the story</a></td>-->
-              <!--<td>0:00</td>-->
-              <!--<td>Entire story</td>-->
-              <!--<td>Need mora</td>-->
-              <!--<td>None</td>-->
-              <!--<td>-->
-              <!--<div class="btn-group" data-toggle="tooltip" data-placement="right" title="" data-original-title="Request for Recording"> <a type="button" href="" class="btn btn-warning" data-toggle="tooltip"><span class="glyphicon glyphicon-hand-right"></span></a>-->
-              <!--</div>-->
-              <!--</td>-->
-              <!--</tr>-->
-              <!--</table>-->
-              <!--</div>-->
+             
             </div>
           </div>
         </div>
@@ -1092,31 +962,8 @@
   </div>
 </div>
 
-<div class="modal fade bs-example-modal-lgconformation" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title">Confirmation</h4>
-      </div>
-      <div class="modal-body">
-        <p>will be removed from your topics list</p>
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" >Ok</button>
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Cancel</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- jQuery 2.2.0 -->
 
-<!--<script src="audioplayerengine/jquery.js"></script>-->
-<!--<script src="audioplayerengine/amazingaudioplayer.js"></script>-->
-<!--<link rel="stylesheet" type="text/css" href="audioplayerengine/initaudioplayer-1.css">-->
-<!--<script src="audioplayerengine/initaudioplayer-1.js"></script>-->
-<!--<script src="plugins/iCheck/icheck.min.js"></script>-->
 <script>
   $(function () {
     $('input').iCheck({
@@ -1126,9 +973,4 @@
     });
   });
 </script>
-<!-- jQuery UI 1.11.4 -->
 
-<!--&lt;!&ndash; Resolve conflict in jQuery UI tooltip with Bootstrap tooltip &ndash;&gt;-->
-<!--<script>-->
-<!--$.widget.bridge('uibutton', $.ui.button);-->
-<!--</script>-->

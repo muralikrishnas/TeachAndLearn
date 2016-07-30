@@ -13,24 +13,24 @@
  * # chapterPageCtrl
  * Controller of the sampleApp1App
  */
-
+/*globals Global: true*/
 angular.module('sampleApp1App')
-  .controller('chapterPageCtrl',function ($scope, $http){
-   // $scope.contentCollapse = true;
+  .controller('chapterPageCtrl',['$scope','$http','UserService',function ($scope, $http, UserService){
    
-   	var url = "scripts/json/addChild.json";
-	var url1 = "scripts/json/Useraudios.json";
-	
-    $http.get(url).success( function(response) {
-      $scope.students = response;
-      console.log(response);
-    });
+	var subId = Global.requiredId.SUBID;
+	UserService.fetchAllUsers(Global.RestUrls.chapterUrl,subId)
+ 	.then(function(response){
+ 		$scope.chapterlist = response;
+ 		//console.log(response);
+ 	});
+   
     
-    $http.get(url1).success( function(response) {
-      $scope.students = response;
-      console.log(response);
-    });
-    
+    $scope.showTopics = function(chId){
+    	//alert(chId);
+    	Global.requiredId.CHID = chId;
+	 	UserService.fetchAllUsers(Global.RestUrls.topicUrl,chId)
+    };
+   
     $scope.collapseOne = false;
 
     $scope.test = function(){
@@ -49,4 +49,4 @@ angular.module('sampleApp1App')
     };
     
 	
-  });
+  }]);

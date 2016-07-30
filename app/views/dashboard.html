@@ -150,86 +150,22 @@
           </div>
 
         </div>
-       </div>
+       </div> -->
        
 	   <div class="col-md-9">
-	    <div class="col-lg-4 col-md-6"  ng-repeat="student in students">
+	    <div class="col-lg-4 col-md-6" ng-repeat="student in students">
 	      	<div class="small-box bg-aqua">
 		        <div class="inner">
-		        <a href="#/chapterPage" class="btn-info">
+		        <a href="#/chapterPage" ng-click="go(student.subjectId)" class="btn-info">
 		          <h3>{{student.subjectName}}</h3>
 		          <div class="icon"> <i class="ion"><img src="/styles/dist/img/{{student.imgUrl}}"></i> </div>
 		          </a>
 		        </div>
 		  	</div>
 	    </div>
-	   </div>
-         -->
-      <div class="col-md-9">
-        <div class="col-lg-4 col-md-6">
-          <div class="small-box bg-aqua">
-            <div class="inner">
-            <a href="#/chapterPage" class="btn-info">
-              <h3>Social Studies</h3>
-              <div class="icon"> <i class="ion"><img src="/styles/dist/img/social-studies-icon.png"></i> </div>
-              </a>
-            </div>
-
-             </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <!-- small box -->
-          <div class="small-box bg-green">
-            <div class="inner">
-            <a href="#/chapterPage" class="btn-info">
-              <h3>English</h3>
-              <div class="icon"> <i class="ion"><img src="/styles/dist/img/english.png"></i> </div>
-              </a> </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <!-- small box -->
-          <div class="small-box bg-yellow">
-            <div class="inner">
-            <a href="#/chapterPage" class="btn-info">
-              <h3>Science</h3>
-              <div class="icon"> <i class="ion"><img src="/styles/dist/img/Science.png"></i> </div>
-              </a> </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6">
-          <!-- small box -->
-          <div class="small-box bg-red">
-            <div class="inner">
-            <a href="#/chapterPage" class="btn-info">
-              <h3>Maths</h3>
-              <div class="icon"> <i class="ion"><img src="/styles/dist/img/maths.png"></i> </div>
-              </a> </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <!-- small box -->
-          <div class="small-box  bg-light-blue-gradient">
-            <div class="inner">
-            <a href="#/chapterPage" class="btn-info">
-              <h3>Kannada</h3>
-              <div class="icon"> <i class="ion"><img src="/styles/dist/img/kannada.png"></i> </div>
-              </a> </div>
-          </div>
-        </div>
-        <div class="col-lg-4 col-md-6">
-          <!-- small box -->
-          <div class="small-box bg-green-gradient">
-            <div class="inner">
-            <a href="#/chapterPage" class="btn-info">
-              <h3>Hindi</h3>
-              <div class="icon"> <i class="ion"><img src="/styles/dist/img/hindi.png"></i> </div>
-              </a> </div>
-          </div>
-        </div>
-      </div>
-      <div class="col-md-3">
+	   </div> 
+        
+     <div class="col-md-3">
         <div class="box">
           <div class="box-body">
         <div class="container">
@@ -243,14 +179,12 @@
       </div>
       <div id="RecentlyListened" class="panel-collapse collapse in">
         <ul class="list-group">
-          <li class="list-group-item"><a  data-toggle="tooltip" data-placement="right" title="Samit: History->Freedom Fighters (2:45 Min)" href="#/rec_dashboard">Number system</a></li>
-          <li class="list-group-item"><a  data-toggle="tooltip" data-placement="right" title="Samit: History->Freedom Fighters (2:45 Min)" href="#/rec_dashboard">History of Mankind</a></li>
-          <li class="list-group-item"><a  data-toggle="tooltip" data-placement="right" title="Samit: History->Freedom Fighters (2:45 Min)" href="#/rec_dashboard">Vyakaran</a></li>
+          <li class="list-group-item" ng-repeat="recenttopic in recenttopics">
+          	<a  data-toggle="tooltip" data-placement="right" title="Samit: History->Freedom Fighters (2:45 Min)" href="#/rec_dashboard">{{recenttopic.recentvideoname}}</a></li>
         </ul>
         <ul class="list-group" ng-show="RecentlyListenedsub">
-          <li class="list-group-item"><a  data-toggle="tooltip" data-placement="right" title="Samit: History->Freedom Fighters (2:45 Min)" href="#/rec_dashboard">Number system1</a></li>
-          <li class="list-group-item"><a  data-toggle="tooltip" data-placement="right" title="Samit: History->Freedom Fighters (2:45 Min)" href="#/rec_dashboard">History of Mankind2</a></li>
-          <li class="list-group-item"><a  data-toggle="tooltip" data-placement="right" title="Samit: History->Freedom Fighters (2:45 Min)" href="#/rec_dashboard">Vyakaran3</a></li>
+          <li class="list-group-item" ng-repeat="recenttopic in recenttopics">
+          	<a  data-toggle="tooltip" data-placement="right" title="Samit: History->Freedom Fighters (2:45 Min)" href="#/rec_dashboard">{{recenttopic.disprecentvideoname}}</a></li>
         </ul>
         <div class="panel-footer"><a data-toggle="collapse" id="dots" ng-click="toggle_visibility()"><span class="glyphicon glyphicon-option-horizontal"></span></a></div>
 

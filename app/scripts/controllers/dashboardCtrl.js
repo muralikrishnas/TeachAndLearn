@@ -10,17 +10,28 @@
  * # dashboardCtrl
  * Controller of the sampleApp1App
  */
+/*globals Global: true*/
 
 angular.module('sampleApp1App')
-  .controller('dashboardCtrl',function ($scope, $http){
-   // $scope.contentCollapse = false;
-   
-  
-    $http.get('http://10.11.0.31:8080/dash/subs/1').success( function(response) {
-      $scope.students = response;
-      console.log(response);
+  .controller('dashboardCtrl',['$scope','$http','UserService',function ($scope, $http, UserService){
+   UserService.fetchAllUsers(Global.RestUrls.subjectUrl,1)
+  	
+  	.then(function(response){
+     $scope.students = response;
+     //console.log(response);
     });
     
+   
+     $scope.go = function(id){
+     	 Global.requiredId.SUBID = id;
+	 	UserService.fetchAllUsers(Global.RestUrls.chapterUrl,id);
+	
+	 };
+	 
+    $http.get('/scripts/json/recentvideos.json').success( function(response) {
+      $scope.recenttopics = response;
+      console.log(response);
+    });
     
     $scope.collapseOne = false;
 
@@ -42,4 +53,5 @@ angular.module('sampleApp1App')
       $scope.RecentlySharedWithMesub = !$scope.RecentlySharedWithMesub ;
     };
 
-  });
+  }]);
+  

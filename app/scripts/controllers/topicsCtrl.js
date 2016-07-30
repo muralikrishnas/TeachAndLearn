@@ -7,10 +7,28 @@
  * # topicsCtrl
  * Controller of the sampleApp1App
  */
+/*globals Global: true*/
 
 angular.module('sampleApp1App')
-  .controller('topicsCtrl',function ($scope,$http){
-    //$scope.setBodyClass('hold-transition');
+  .controller('topicsCtrl',['$scope','$http','UserService',function ($scope, $http, UserService){
+    
+    var chId = Global.requiredId.CHID;
+    
+	UserService.fetchAllUsers(Global.RestUrls.topicUrl,chId)
+ 	.then(function(response){
+ 		$scope.topicslist = response;
+ 		console.log(response);
+ 		
+ 	});
+   $scope.deleteAudio = function(id){
+   	//alert(id);
+   	
+   	if (confirm("Are you sure?")) {
+        UserService.deleteUser(id);
+    }
+    return false;
+   };
+   
     console.log("Loaded");
     $scope.timeLimit = 10;
     $scope.collapseOne = false;
@@ -36,7 +54,7 @@ angular.module('sampleApp1App')
     //     console.log(recordings);
     //   });
     // };
-    $scope.getAll();
+    //$scope.getAll();
     // $window.onbeforeunload = function() {
     //   var hack = /irefox\/([4-9]|1\d+)/.test(navigator.userAgent);
     //   if (hack)
@@ -44,7 +62,7 @@ angular.module('sampleApp1App')
     //   return warning;}
     // };
 
-  })
+  }])
   .config(function (recorderServiceProvider) {
     recorderServiceProvider
       .forceSwf(false)

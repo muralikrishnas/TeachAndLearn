@@ -28,7 +28,7 @@ angular.module('sampleApp1App')
                    // callback(response);
                // });
 //             
-			//var url ="http://localhost:9040/log/all";
+			//var url ="http://localhost:9040/log/all,http://192.168.1.17:9026/log/all";
 			//scripts/json/addchild.json
 			// $http.post('http://10.11.0.31:8080/map/byId/1',{ username: username, password: password })
                // .success(function (data) {
@@ -43,10 +43,10 @@ angular.module('sampleApp1App')
 			  // });
 //                     
               
-			$http.get('http://10.11.0.31:8080/map/byEmail/sriya').success(function(data) {
+			$http.get('http://10.11.0.31:8080/dashboard/login').success(function(data) {
 			  var response = data;
 			  angular.forEach(data,function (value,key) {
-			  console.log(response);
+			  //console.log(response);
 			
 			  var response = { success: username ===  value.email && password === value.password};
 			  if(!response.success) {

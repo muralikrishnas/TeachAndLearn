@@ -25,24 +25,29 @@ var Global = (function() {
    var userCredentials = {
    		USERID :''
    };
+   
+    var requiredId = {
+   		SUBID :'',
+   		CHID : '',
+   		TOPICID : '',
+   		AUDIOID : ''
+   };
   var registerParent = true;
 
 	var RestUrls = {
 		DOMAIN : 'http://',
-		APPLIBURL: ':3000/appLib',
-		WORKBOARDAPPURL: ':3000/workboardApps',
-		APPLIBRARYURL : ':3000/applications',
-		DISCOVERYURL : ':3000/discovery',
-		WORKBOARDURL : ':3000/workboards/',
-		IPURL:':3000/ip',
-		SHELFURL:':3000/shelf',
-		CARDURL:':3000/card',
-		PORTURL:':3000/port'
+		subjectUrl :'subjects/',
+		chapterUrl : 'chapters/',
+		topicUrl : 'getAudio/'
+		
+		
+		
 	};
 
 	return {
 		loginUsername : loginUsername,
 		userCredentials : userCredentials,
+		requiredId : requiredId,
     registerParent : registerParent,
 		RestUrls :RestUrls
 	};

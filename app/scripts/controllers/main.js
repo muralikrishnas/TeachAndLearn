@@ -51,6 +51,10 @@ angular.module('sampleApp1App')
             controller: 'dashboardCtrl',
             templateUrl: 'views/dashboard.html'
         })
+        .when('/dashboard/1', {
+            controller: 'dashboardCtrl',
+            templateUrl: 'views/dashboard.html'
+        })
         .when('/group', {
             controller: 'groupCtrl',
             templateUrl: 'views/AddtoStudyGroup.html'
@@ -80,8 +84,12 @@ angular.module('sampleApp1App')
         templateUrl: 'views/chapter_page.html'
       })
       .when('/topics', {
-        controller: 'recordCtrl',
+        controller: 'topicsCtrl',
         templateUrl: 'views/Topics.html'
+      })
+      .when('/topics2', {
+        controller: 'topicsCtrl',
+        templateUrl: 'views/Topics2.html'
       })
       .when('/rec_dashboard', {
         controller: 'recDashboardCtrl',
@@ -91,6 +99,11 @@ angular.module('sampleApp1App')
         controller: 'uploadaudioCtrl',
         templateUrl: 'views/uploadaudio.html'
       })
+      .when('/hello', {
+        controller: 'helloCtrl',
+        templateUrl: 'views/hello.html'
+      })
+      
       .otherwise({ redirectTo: '/login' });
 
     }])
