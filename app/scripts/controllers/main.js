@@ -40,14 +40,17 @@ angular.module('sampleApp1App')
 
     $routeProvider
         .when('/login', {
+        	cache: false,
             controller: 'MainCtrl',
             templateUrl: 'views/main.html'
         })
       .when('/parent', {
         controller: 'parentCtrl',
+        cache: false,
         templateUrl: 'views/Parent_HomePage.html'
       })
         .when('/dashboard', {
+        	cache: false,
             controller: 'dashboardCtrl',
             templateUrl: 'views/dashboard.html'
         })
@@ -60,6 +63,7 @@ angular.module('sampleApp1App')
             templateUrl: 'views/AddtoStudyGroup.html'
         })
         .when('/record', {
+        	cache: false,
             controller: 'recordCtrl',
             templateUrl: 'views/record.html'
         })
@@ -80,14 +84,17 @@ angular.module('sampleApp1App')
         templateUrl: 'views/edit.html'
       })
       .when('/chapterPage', {
+      	cache: false,
         controller: 'chapterPageCtrl',
         templateUrl: 'views/chapter_page.html'
       })
       .when('/topics', {
+      	cache: false,
         controller: 'topicsCtrl',
         templateUrl: 'views/Topics.html'
       })
       .when('/topics2', {
+      	cache: false,
         controller: 'topicsCtrl',
         templateUrl: 'views/Topics2.html'
       })

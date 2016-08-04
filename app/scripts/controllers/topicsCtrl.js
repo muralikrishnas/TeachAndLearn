@@ -18,19 +18,41 @@ angular.module('sampleApp1App')
  	.then(function(response){
  		$scope.topicslist = response;
  		console.log(response);
- 		
  	});
-   $scope.deleteAudio = function(id){
+ 	
+ 	$scope.refresh = function(){
+    UserService.fetchAllUsers(Global.RestUrls.topicUrl,chId)
+          .then(function(response){
+ 		$scope.topicslist = response;
+ 		console.log(response);
+ 	});
+}
+
+ 	 
+    $scope.deleteAudio = function(id){
    	//alert(id);
-   	
    	if (confirm("Are you sure?")) {
         UserService.deleteUser(id);
+        $scope.refresh();
     }
     return false;
    };
    
-    console.log("Loaded");
+  	console.log("Loaded");
     $scope.timeLimit = 10;
+    //var elapsedTime = $scope.elapsedTime;
+    
+	$scope.insertAudio = function(){
+   	var data = {chapterId: chId, source: Global.loginUsername.USERNAME, topicName: $scope.topicname, reference:$scope.reference, comments:$scope.comments};
+   	//var data = {topicName: $scope.topicname}
+   	//var data = $scope.topicname;
+   	console.log(data);
+   	UserService.updateUser(data);
+   };
+   
+   
+  
+    
     $scope.collapseOne = false;
 
     $scope.test = function(){

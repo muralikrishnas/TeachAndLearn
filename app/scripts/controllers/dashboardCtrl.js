@@ -14,7 +14,12 @@
 
 angular.module('sampleApp1App')
   .controller('dashboardCtrl',['$scope','$http','UserService',function ($scope, $http, UserService){
-   UserService.fetchAllUsers(Global.RestUrls.subjectUrl,1)
+  	//var classid;
+  	//sessionStorage.setItem(classid, Global.requiredId.CLASSID);
+    // Retrieve
+    //var classid = sessionStorage.getItem(classid);
+    
+   UserService.fetchAllUsers(Global.RestUrls.subjectUrl,sessionStorage.getItem("classid"))
   	
   	.then(function(response){
      $scope.students = response;
@@ -23,9 +28,10 @@ angular.module('sampleApp1App')
     
    
      $scope.go = function(id){
-     	 Global.requiredId.SUBID = id;
-	 	UserService.fetchAllUsers(Global.RestUrls.chapterUrl,id);
-	
+     	Global.requiredId.SUBID = id;
+     	sessionStorage.setItem("subjectId", Global.requiredId.SUBID);
+	 	//UserService.fetchAllUsers(Global.RestUrls.chapterUrl,Global.requiredId.SUBID);
+		UserService.fetchAllUsers(Global.RestUrls.chapterUrl,sessionStorage.getItem("subjectId"));
 	 };
 	 
     $http.get('/scripts/json/recentvideos.json').success( function(response) {

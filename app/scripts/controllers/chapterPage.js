@@ -17,8 +17,12 @@
 angular.module('sampleApp1App')
   .controller('chapterPageCtrl',['$scope','$http','UserService',function ($scope, $http, UserService){
    
-	var subId = Global.requiredId.SUBID;
-	UserService.fetchAllUsers(Global.RestUrls.chapterUrl,subId)
+   	//sessionStorage.setItem("subjectId", Global.requiredId.SUBID);
+	//UserService.fetchAllUsers(Global.RestUrls.chapterUrl,sessionStorage.getItem("subjectId"))
+   
+	//var subId = Global.requiredId.SUBID;
+	//UserService.fetchAllUsers(Global.RestUrls.chapterUrl,subId)
+	UserService.fetchAllUsers(Global.RestUrls.chapterUrl,sessionStorage.getItem("subjectId"))
  	.then(function(response){
  		$scope.chapterlist = response;
  		//console.log(response);

@@ -8,51 +8,86 @@
  * Controller of the sampleApp1App
  */
 
+
 angular.module('sampleApp1App')
- 
- .directive('ngFiles', ['$parse', function ($parse) {
 
-            function fn_link(scope, element, attrs) {
-                var onChange = $parse(attrs.ngFiles);
-                element.on('change', function (event) {
-                    onChange(scope, { $files: event.target.files });
-                });
-            };
+	.directive('fileModel', ['$parse', function ($parse) {
+        return {
+           restrict: 'A',
+           link: function(scope, element, attrs) {
+              element.bind('change', function(){
+              $parse(attrs.fileModel).assign(scope,element[0].files)
+                 scope.$apply();
+              });
+           }
+        };
+     }])
+     .controller('uploadaudioCtrl', ['$scope', '$http', function($scope, $http){
 
-            return {
-                link: fn_link
-            }
-        } ])
-        .controller('uploadaudioCtrl', function ($scope, $http) {
 
-            var formdata = new FormData();
-            $scope.getTheFiles = function ($files) {
-                angular.forEach($files, function (value, key) {
-                    formdata.append(key, value);
-                });
-            };
-
-            // NOW UPLOAD THE FILES.
-            $scope.uploadFiles = function () {
-
-                var request = {
-                    method: 'POST',
-                    url: '',
-                    data: formdata,
-                    headers: {
-                        'Content-Type': undefined
-                    }
-                };
-
-                // SEND THE FILES.
-                $http(request)
-                    .success(function (d) {
-                        alert(d);
-                    })
-                    .error(function () {
-                    });
-            }
+       $scope.uploadFile=function(){
+       var fd=new FormData();
+        console.log($scope.files);
+        angular.forEach($scope.files,function(file){
+        fd.append('file',file);
         });
+       $http.post('http://192.168.1.17:9010/Uploadaudiofiles/',fd,
+                                                            {
+                                                            transformRequest: angular.identity,
+                                                            headers: {'Content-Type': undefined}
+                                                            }).success(function(d){
+                                                            console.log(d);
+                                                            })
+
+
+       }
+     }]);
+     
+// angular.module('sampleApp1App')
+//  
+ // .directive('ngFiles', ['$parse', function ($parse) {
+// 
+            // function fn_link(scope, element, attrs) {
+                // var onChange = $parse(attrs.ngFiles);
+                // element.on('change', function (event) {
+                    // onChange(scope, { $files: event.target.files });
+                // });
+            // };
+// 
+            // return {
+                // link: fn_link
+            // }
+        // } ])
+        // .controller('uploadaudioCtrl', function ($scope, $http) {
+// 
+            // var formdata = new FormData();
+            // $scope.getTheFiles = function ($files) {
+                // angular.forEach($files, function (value, key) {
+                    // formdata.append(key, value);
+                // });
+            // };
+// 
+            // // NOW UPLOAD THE FILES.
+            // $scope.uploadFiles = function () {
+// 
+                // var request = {
+                    // method: 'POST',
+                    // url: '',
+                    // data: formdata,
+                    // headers: {
+                        // 'Content-Type': undefined
+                    // }
+                // };
+// 
+                // // SEND THE FILES.
+                // $http(request)
+                    // .success(function (d) {
+                        // alert(d);
+                    // })
+                    // .error(function () {
+                    // });
+            // }
+        // });
         
     // .controller('uploadaudioCtrl', ['$scope', '$http','fileUpload', function($scope, $http, fileUpload){
             // $scope.uploadFile = function(){

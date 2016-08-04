@@ -1,4 +1,5 @@
 'use strict';
+/*globals Global: true*/
 
 angular.module('sampleApp1App')
 
@@ -43,16 +44,24 @@ angular.module('sampleApp1App')
 			  // });
 //                     
               
-			$http.get('http://10.11.0.31:8080/dashboard/login').success(function(data) {
+			$http.get('http://192.168.1.30:8080/dashboard/login').success(function(data) {
 			  var response = data;
+			  //Global.userCredentials.USERID = data[0].userId;
+			  //Global.requiredId.CLASSID = data[0];
 			  angular.forEach(data,function (value,key) {
 			  //console.log(response);
-			
+			  
 			  var response = { success: username ===  value.email && password === value.password};
 			  if(!response.success) {
 			            response.message = 'Invalid Username or passwordS';
 			        }
-			        callback(response);
+			        else{
+			        	sessionStorage.setItem("classid", value.classId);
+			        	Global.loginUsername.USERNAME = value.email;
+			        	Global.requiredId.CLASSID = value.classId;
+			        	Global.userCredentials.USERID = value.userId;
+			        	callback(response);
+			        	}
 			  })
 			});
         };

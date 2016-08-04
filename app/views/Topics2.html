@@ -122,10 +122,10 @@
           <li class="dropdown notifications-menu">
             <a class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-bell-o"><span class="glyphicon glyphicon-flag"></span></i>
-              <span class="label label-danger">10</span>
+              <span class="label label-danger"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 10 New topic requests</li>
+              <li class="header">You have 0 New topic requests</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -163,10 +163,10 @@
           <li class="dropdown tasks-menu">
             <a class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"><span class="glyphicon glyphicon-user"></span></i>
-              <span class="label label-danger">9</span>
+              <span class="label label-danger"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 9 New Connect Requests</li>
+              <li class="header">You have 0 New Connect Requests</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -220,10 +220,10 @@
           <li class="dropdown tasks-menu">
             <a class="dropdown-toggle" data-toggle="dropdown">
               <i class="fa fa-flag-o"><span class="glyphicon glyphicon-user"></span></i>
-              <span class="label label-danger">5</span>
+              <span class="label label-danger"></span>
             </a>
             <ul class="dropdown-menu">
-              <li class="header">You have 5 Pending Requests</li>
+              <li class="header">You have 0 Pending Requests</li>
               <li>
                 <!-- inner menu: contains the actual data -->
                 <ul class="menu">
@@ -334,7 +334,7 @@
 
                 </ol>
                 <!-- search form -->
-                <form action="#" method="get" class="sidebar-form">
+                <form action="#" method="post" class="sidebar-form">
                   <div class="input-group">
                     <input type="text" name="q" class="form-control" placeholder="Search by topic">
               <span class="input-group-btn">
@@ -418,8 +418,8 @@
                       <td>{{topic.rating}}</td>
                       <td>{{topic.url}}</td>
                       <td><div class="btn-group">
-                        <!-- <button type="button" class="btn-danger " title="Remove" data-toggle="modal" data-target=".bs-example-modal-lgconformation" ng-click="deleteAudio(topic.audioId)"><span class="glyphicon glyphicon-remove-sign"></span></button>
-                      <button type="button" class="btn btn-warning " title="Share"  data-toggle="modal" data-target=".bs-example-modal-lg2" ><i class="glyphicon glyphicon-share" aria-hidden="true"></i></button> -->
+                        <!-- <button type="button" class="btn-danger " title="Remove" data-toggle="modal" data-target=".bs-example-modal-lgconformation" ng-click="deleteAudio(topic.audioId)"><span class="glyphicon glyphicon-remove-sign"></span></button>-->
+                      <button type="button" class="btn btn-warning " title="Share"  data-toggle="modal" data-target=".bs-example-modal-lg2" ><i class="glyphicon glyphicon-share" aria-hidden="true"></i></button> 
                       <button type="button" class="btn btn-warning " title="Delete" data-toggle="modal" data-target=".bs-example-modal-lgconformation"><span class="glyphicon glyphicon-trash" ng-click="deleteAudio(topic.audioId)"></span></button>
                       </div></td>
                     </tr>
@@ -581,9 +581,9 @@
                     <tr>
                       <td><a href="#">Science</a></td>
                       <td>Solid Liquid Gases</td>
-                      <td><input type="text"/> </td>
+                      <td><input id="topicname" ng-model="topicname" name="topicname" type="text"/> </td>
                       <td>Summary</td>
-
+					<td><button type="button" class="btn btn-success" ng-click="insertAudio()"><span class="glyphicon glyphicon-save"></span> Save</button></td>
 
                     </tr>
 
@@ -631,11 +631,11 @@
                         </div>
 
 
-                        <h2 style="font-family: sans-serif; text-align: center; width: 60px; border-radius: 20px;
+                        <h2 ng-model="elapsedTime" style="font-family: sans-serif; text-align: center; width: 60px; border-radius: 20px;
                         border: solid 2px #333; padding: 20px 10px;" ng-if="recorder.status.isRecording">
                           {{recorder.elapsedTime > 9 ? recorder.elapsedTime : ('0'+recorder.elapsedTime)}}
                         </h2>
-
+                        
 
                         <h2 style="font-family: sans-serif; text-align: center; border: solid 2px #333; padding: 20px 10px;"
                             ng-if="recorder.status.isRecording">
@@ -643,7 +643,8 @@
                         </h2>
                       </div>
 
-
+						
+  						
                       <div ng-if="!recorder.isAvailable">
                         Your browser does not support this feature natively, please use latest version of <a
                         href="https://www.google.com/chrome/browser" target="_blank">Google Chrome</a> or <a
@@ -669,7 +670,8 @@
                           <li><a href="#">Sujith</a></li>
                         </ul>
                       </div>
-                      <button type="button" class="btn btn-success"  ng-click="recorder.save(file)" ng-disabled="recorder.status.isRecording || !recorder.audioModel"><span class="glyphicon glyphicon-save"></span> Save</button>
+                      <button type="button" class="btn btn-success" ng-click="recorder.save(file)" ng-disabled="recorder.status.isRecording || !recorder.audioModel"><span class="glyphicon glyphicon-save"></span> Save</button>
+                      
                     </div>
 
                   </ng-audio-recorder>
@@ -687,12 +689,12 @@
                     <!-- input states -->
                     <div class="form-group has-success">
                       <label class="control-label" for="inputSuccess"><i class="fa fa-check"></i> Provide Reference material details (e.g. School Book page 39-40</label>
-                      <input type="text" class="form-control" id="inputSuccess" placeholder="Enter ...">
+                      <input type="text" ng-model="reference" class="form-control" id="inputSuccess" placeholder="Enter ...">
 
                     </div>
                     <div class="form-group has-warning">
                       <label class="control-label" for="inputWarning"><i class="fa fa-bell-o"></i> Comments/Message</label>
-                      <input type="text" class="form-control" id="inputWarning" placeholder="Enter ...">
+                      <input type="text" ng-model="comments" class="form-control" id="inputWarning" placeholder="Enter ...">
 
                     </div>
 

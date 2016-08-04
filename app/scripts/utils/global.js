@@ -20,13 +20,14 @@ var Global = (function() {
 	 * @type json
 	 */
 	var loginUsername = {
-			USERNAME : 'John Doe'
+			USERNAME : ''
 	};
    var userCredentials = {
    		USERID :''
    };
    
     var requiredId = {
+    	CLASSID :'',
    		SUBID :'',
    		CHID : '',
    		TOPICID : '',
@@ -48,7 +49,7 @@ var Global = (function() {
 		loginUsername : loginUsername,
 		userCredentials : userCredentials,
 		requiredId : requiredId,
-    registerParent : registerParent,
+    	registerParent : registerParent,
 		RestUrls :RestUrls
 	};
 })();

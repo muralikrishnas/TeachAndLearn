@@ -5,8 +5,8 @@ angular.module('sampleApp1App')
  
     return {
          
-            fetchAllUsers: function(ch,id) {
-                    return $http.get('http://10.11.0.31:8080/dashboard/' + ch + id)
+            fetchAllUsers: function(chapter,id) {
+                    return $http.get('http://192.168.1.30:8080/dashboard/' + chapter + id)
                             .then(
                                     function(response){
                                         return response.data;
@@ -18,8 +18,8 @@ angular.module('sampleApp1App')
                             );
             },
              
-            createUser: function(user){
-                    return $http.post('http://10.11.0.31:8080/dashboard/subjects/', user)
+            createUser: function(data){
+                    return $http.post('http://192.168.1.30:8080/dashboard/seva/' , data)
                             .then(
                                     function(response){
                                         return response.data;
@@ -31,8 +31,8 @@ angular.module('sampleApp1App')
                             );
             },
              
-            updateUser: function(user, id){
-                    return $http.put('http://10.11.0.31:8080/dashboard/subjects/'+id, user)
+            updateUser: function(data){
+                    return $http.put('http://192.168.1.30:8080/dashboard/ins/' , data)
                             .then(
                                     function(response){
                                         return response.data;
@@ -45,7 +45,7 @@ angular.module('sampleApp1App')
             },
              
             deleteUser: function(id){
-                    return $http.delete('http://10.11.0.31:8080/dashboard/delAudio/'+id)
+                    return $http.delete('http://192.168.1.30:8080/dashboard/delAudio/'+id)
                             .then(
                                     function(response){
                                         return response.data;
